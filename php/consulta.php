@@ -1,26 +1,43 @@
 <?php
 
+class consulta{
 
-var cidade = $_POST['cidade'];
+    protected function getConsultar(){
+      $curl = curl_init();
 
-$curl = curl_init();
+      curl_setopt_array($curl, array(
+      CURLOPT_URL => 'https://swapi.dev/api/people',
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'GET',
+      ));
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://api.apify.com/v2/key-value-stores/TyToNta7jGKkpszMZ/records/LATEST',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'GET',
-));
+      $response = curl_exec($curl);
 
-$response = curl_exec($curl);
+      curl_close($curl);
 
-curl_close($curl);
-echo $response;
+      $json_consulta = json_decode($response, true);
+
+      return $json_consulta;
+  }
+  
+  public function cretedConsulta()
+  {
+    $json = $this->getConsultar();
+
+    foreach ($json['results'] as $ator) {
+      echo "Nome: ".$ator['name']."<br>";
+    };
+  }
+
+}
 
 
-
-?>
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $consulta = new Consulta;
+  $consulta->cretedConsulta();
+}

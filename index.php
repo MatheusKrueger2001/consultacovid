@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-        function consulta(){
+        /*function consulta(){
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -36,7 +36,7 @@
         foreach ($json_consulta['results'] as $ator) {
              echo "Nome: ".$ator['name']."<br>";
         };
-        
+      */  
     ?>
 </body>
 </html>
