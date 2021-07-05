@@ -15,14 +15,17 @@
 <body>
     <div class="pesquisa container">
         <div class="div-pesquisa">
-            <form class="form-consulta" method="POST" action="php/consulta.php">
+            <form class="form-consulta" method="POST" action="script.js">
                 <a>Estado que deseja pesquisar:</a>
                 <br>
                 <input type="text" name="cidade" id="cidade-consulta">
                 <br>
-                <input type="submit" class="button-submit" onclick="" value="Consultar">
+                <input type="submit" class="button-submit" onclick="chamarconsulta" value="Consultar">
             </form>
         </div>
     </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+<link rel="stylesheet" href="script.js">
 </body>
 </html>
